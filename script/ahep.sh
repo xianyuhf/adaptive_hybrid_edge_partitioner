@@ -20,7 +20,7 @@ test1()
     p=8
     for i in {0..0}
     do
-        $executePath/$executeName -p $p -method $method -hdf 1000 -hybrid_NE 1 -topo 4 -filename ${inputfile[0]} 
+        $executePath/$executeName -p $p -method $method -hdf 10000 -hybrid_NE 1 -topo 4 -filename ${inputfile[0]} 
         let p=p\*2
     done
     popd
@@ -39,7 +39,7 @@ execute(){
 }
 
 main(){
-    # complie
+    complie
     execute
     return 0
 }

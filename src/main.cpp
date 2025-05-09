@@ -60,8 +60,7 @@ int main(int argc, char *argv[])
     }
     google::HandleCommandLineHelpFlags();
 
-    Timer timer;
-    timer.start();
+
     Partitioner *partitioner = NULL;
 
     if (FLAGS_method == "ahep")
@@ -70,8 +69,7 @@ int main(int argc, char *argv[])
         LOG(ERROR) << "unkown method: " << FLAGS_method;
     LOG(INFO) << "partition method: " << FLAGS_method;
     partitioner->split();
-    timer.stop();
-    LOG(INFO) << "total time: " << timer.get_time();
+    
     google::ShutdownGoogleLogging();
 }
 

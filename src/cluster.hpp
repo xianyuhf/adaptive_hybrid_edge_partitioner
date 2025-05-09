@@ -42,19 +42,17 @@ public:
         return false; 
     }
     bool updates_comm(vid_t vid){
-        double value;
+        double value=0.0;
         if(!comms_set.get(comm_id,data[vid])){
-            for(int i=0;i<comm_id.size();i++){
+            for(size_t i=0;i<comm_id.size();i++){
                 value+=comms[comm_id[comm_id.size()-1]-'0'][comm_id[i]-'0'];
             }
             comms_set.insert(comm_id,value);
             data[vid]=value;
         }
-        
-
         return true;
     }
-    bool updates_hcsg(vid_t vid){
+    void updates_hcsg(vid_t vid){
         for(auto it=data.begin();it!=data.end();it++){
            data[vid]+=comms[vid][it->first];
            data[it->first]+=comms[it->first][vid];
@@ -108,7 +106,7 @@ public:
         ts.insert_comm_id(vid);
     }
 
-    double getValue(int id, vid_t vid, double &value) {
+    bool getValue(int id, vid_t vid, double &value) {
         auto it = tset_temp.find(id);
         if (it != tset_temp.end()) {
              it->second.get(vid, value); 

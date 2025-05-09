@@ -7,7 +7,7 @@ void AHEPartitioner::set_lf(){
     double sizes=0.0;
     int temp=0;
     int mirrors=0;
-    for(int i=0;i<num_vertices;i++){
+    for(vid_t i=0;i<num_vertices;i++){
         for(int j=0;j<p;j++){
             if(is_boundarys[j].get(i)){
                 for(int k=0;k<p;k++){
@@ -33,13 +33,13 @@ void AHEPartitioner::set_load(){
     double sum_c=0.0;
     double max_bs=0.0;
     double sum_bs=0.0;
-    double c[p]={0.0};
+    // double c[p]={0.0};
     double temp=0.0;
     double average_degree = (double)(num_edges * 2) / double (num_vertices);
-    int bs_m=0;
-    int c_m=0;
+    // int bs_m=0;
+    // int c_m=0;
     for(int j=0;j<p;j++){
-        for(int i=0;i<num_vertices;i++){
+        for(vid_t i=0;i<num_vertices;i++){
             if(is_boundarys[j].get(i)){
                 temp+=comps[j]*average_degree;
                 for(int k=0;k<p;k++){
@@ -54,11 +54,11 @@ void AHEPartitioner::set_load(){
         
         if(isGreaterThan(temp,max_c)){
             max_c=temp;
-            c_m=j;
+            // c_m=j;
         }
         if(isGreaterThan(bs[j]*capacities[j],max_bs)){
             max_bs=bs[j]*capacities[j];
-            bs_m=j;
+            // bs_m=j;
         }
         temp=0.0;
     }
@@ -385,7 +385,6 @@ double AHEPartitioner::compute_partition_score(vid_t u, vid_t v, int bucket_id) 
     double sum= degree_u+degree_v;
 	double gu = 0.0, gv = 0.0;
     double gu_l=0.0, gv_l=0.0;
-    double sum_m=0.0;
     double gu_rf=0.0, gv_rf=0.0;
     if (is_boundarys[bucket_id].get(u)){
 		gu = degree_u;
@@ -405,7 +404,6 @@ double AHEPartitioner::compute_partition_score(vid_t u, vid_t v, int bucket_id) 
     gv_rf = 1 + (1-gv_rf);
     double cha= abs(gu_rf-gv_rf);
 	if (!is_boundarys[bucket_id].get(u)){
-        double value_r = degree_u;
         double value_a=0;
         double value_comm_a=0.0;
         comm_temp.getValue(u,bucket,value_comm_a);
@@ -415,7 +413,6 @@ double AHEPartitioner::compute_partition_score(vid_t u, vid_t v, int bucket_id) 
         }
 	}
 	if (!is_boundarys[bucket_id].get(v)){
-        double value_r = degree_v;
         double value_a=0;
         double value_comm_a=0.0;
         comm_temp.getValue(v,bucket,value_comm_a);

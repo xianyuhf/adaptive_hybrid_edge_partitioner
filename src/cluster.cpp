@@ -23,7 +23,6 @@ void set_ability(){
         }
     }
     if(FLAGS_topo==2||FLAGS_topo==4){  //comps不同
-        double p1=p/2;
         double sum1 = comp[0]*(p-2)+comp[1]*2;
         double normal_comp[2];
         normal_comp[0]=(comp[0]/sum1);//归一化通信能力
@@ -45,7 +44,6 @@ void set_ability(){
         }
     }
     if(FLAGS_topo==22||FLAGS_topo==44){  
-        double p1=p/2;
         double sum1 = comp[0]*(p/2)+comp[1]*(p/2);
         double normal_comp[2];
         normal_comp[0]=(comp[0]/sum1);
@@ -79,7 +77,6 @@ void set_ability(){
         }
     } //
     if(FLAGS_topo==3||FLAGS_topo==4){
-        double p1=p/2;
         double normal_comm_sum=double(((comm[0]*(p-3)+comm[1]*2)*(p-2))+comm[1]*(p-1)*2)-comm[1]*2+comm[2]*2;
         LOG(INFO)<<"average"<<normal_comm_sum;
         arverage_comm=normal_comm_sum/(p*(p-1));
@@ -94,7 +91,6 @@ void set_ability(){
         normal_comm[2]=comm[2]/normal_comm_sum;  
         LOG(INFO)<<"normal_comm[2]"<<normal_comm[2];
 
-        int i=0;
         for(int i=0;i<p;i++){
             for(int j=0;j<p;j++){
                 comms[i][j]=normal_comm[0];
@@ -125,7 +121,6 @@ void set_ability(){
         }
     } 
     if(FLAGS_topo==33||FLAGS_topo==44){
-        double p1=p/2;
         double normal_comm_sum=double((comm[0]*(p/2-1)+comm[2]*(p/2))*(p/2)+(comm[2]*(p-1))*(p/2));
         LOG(INFO)<<"average"<<normal_comm_sum;
         arverage_comm=normal_comm_sum/(p*(p-1));
@@ -209,9 +204,6 @@ void set_delta(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::v
 void set_ability_haep(){
     double comp[2]={0.17,0.30}; 
     
-    double comm[3]={0.0000045,0.000121,0.00000844}; 
-     
-
     int p=FLAGS_p;
 
     comps.resize(p);
@@ -224,7 +216,7 @@ void set_ability_haep(){
         }
     }
     if(FLAGS_topo==2||FLAGS_topo==4){  
-        double p1=p/2;
+
         double sum1 = comp[0]*(p-2)+comp[1]*2;
         double normal_comp[2];
         normal_comp[0]=(comp[0]/sum1);
@@ -246,7 +238,6 @@ void set_ability_haep(){
         }
     }
     if(FLAGS_topo==22||FLAGS_topo==44){  
-        double p1=p/2;
         double sum1 = comp[0]*(p/2)+comp[1]*(p/2);
         double normal_comp[2];
         normal_comp[0]=(comp[0]/sum1);

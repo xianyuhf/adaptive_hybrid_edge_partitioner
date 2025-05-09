@@ -103,29 +103,20 @@ class AHEPartitioner : public Partitioner
     void update_min_heap_new(vid_t vid,bool bounds=false){
         double temp=0.0;
         double value=0.0;
-        auto &is_core = is_cores[bucket], &is_boundary = is_boundarys[bucket];
+        auto &is_core = is_cores[bucket];
         if(!is_core.get(vid))
         {
-            double mark=0.0;
-            double value_comm_a=0.0;
-            double value_comm_r=0.0;
             std::vector<size_t> pid;
             rep (direction, 2) {
                 ne_adjlist_t &neighbors = direction ? adj_out[vid] : adj_in[vid];
                 for (size_t i = 0; i < neighbors.size();i++) {
                     if (edges[neighbors[i].v].valid()) {
                         vid_t &u = direction ? edges[neighbors[i].v].second : edges[neighbors[i].v].first;
-                        if(!t.get(u)){
-                            t.set_bit_unsync(u);
+                            double value_temp=0.0;
                             temp=update_tset(u);
                             tset_temp.insertTSet(vid,u,temp);
-                            value+=temp;
-                        }else{
-                            double value_temp;
-
                             tset_temp.getValue(vid,u,value_temp);
-                            value+=value_temp;
-                        }
+                            value+=value_temp;                  
                     }
                 }
             }
@@ -140,9 +131,7 @@ class AHEPartitioner : public Partitioner
         double value=0.0;
         auto &is_core = is_cores[bucket], &is_boundary = is_boundarys[bucket];
         double min_comm_current=min_comm[bucket];
-        int marks=0;
         double value_comm_a=0.0;    
-        double num = adj_in_temp[vid].size()+adj_out_temp[vid].size();
         bool have_edge=false;
         rep (direction_u, 2) {
             ne_adjlist_t &neighbors_u = direction_u ? adj_out[vid] : adj_in[vid];
@@ -232,8 +221,7 @@ class AHEPartitioner : public Partitioner
         comm_temp.undate_value(vid,bucket);
         if (d == 0)
             return;
-        auto &is_core = is_cores[bucket], &is_boundary = is_boundarys[bucket];
-
+        
         
         add_boundary(vid);
 

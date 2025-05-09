@@ -62,15 +62,15 @@ class mem_adjlist_t{
 class mem_graph_t{
 
 public:
-  vid_t num_vertices;
-  size_t nedges;
   vid_t *neighbors;
   std::vector<mem_adjlist_t> vdata;
-  vid_t high_degree_threshold; // starting from which degree is a node considered a high-degree node (if exceeded)
+  vid_t num_vertices;
+  size_t nedges;
   double high_degree_factor; // average degree * hdf = hdt
+  vid_t high_degree_threshold; // starting from which degree is a node considered a high-degree node (if exceeded)
+  size_t num_h2h_edges;
   std::fstream h2h_file; // file that keeps edges between two high-degree vertices on external memory
   std::fstream low_degree_file; // file that keeps edges incident to a low-degree vertex on external memory
-  size_t num_h2h_edges;
 
 
 public:
