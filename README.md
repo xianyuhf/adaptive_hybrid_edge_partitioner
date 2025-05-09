@@ -12,7 +12,7 @@ We conduct experiments on a heterogeneous cluster with two types of node normal 
 ### Datasets
 ---------------------
 
-Computer, Physics, Flickr and Reddit are obtained from the Deep Graph Library ([DGL](https://www.dgl.ai/)). The ogbn-arxiv and ogbn-products datasets are obtained from the Open Graph Benchmark ([OGB](https://ogb.stanford.edu/)).
+The experiments used 7 graphs from SNAP (https://snap.stanford.edu/), Web Repository (https://networkrepository.com/) and WebGraph (https://law.di.unimi.it/datasets.php). 
 
 ### Compilation and Usage
 ---------------------
