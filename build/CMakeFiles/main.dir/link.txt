@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -g -std=c++11 -pthread -fopenmp  -Ofast -DNDEBUG  -rdynamic CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/util.cpp.o CMakeFiles/main.dir/src/graph.cpp.o CMakeFiles/main.dir/src/ne_graph.cpp.o CMakeFiles/main.dir/src/conversions.cpp.o CMakeFiles/main.dir/src/ahep_partitioner.cpp.o CMakeFiles/main.dir/src/cluster.cpp.o  -o main -lglog -lgflags 
