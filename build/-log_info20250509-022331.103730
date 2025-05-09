@@ -1,0 +1,50 @@
+Log file created at: 2025/05/09 02:23:31
+Running on machine: node0
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0509 02:23:31.527504 103730 conversions.cpp:169] converting `/home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges'
+I0509 02:23:31.527581 103730 conversions.cpp:173] skip
+I0509 02:23:31.527595 103730 ahep_partitioner.cpp:97] convert time: 9.4391e-05
+I0509 02:23:31.527607 103730 ahep_partitioner.cpp:99] initializing partitioner
+I0509 02:23:31.527609 103730 ahep_partitioner.cpp:103] Hybrid Partitioning is performed.
+I0509 02:23:31.528175 103730 ahep_partitioner.cpp:563] stream builder starts...
+I0509 02:23:31.528259 103730 ahep_partitioner.cpp:570] Average degree: 21.4106
+I0509 02:23:31.528271 103730 ahep_partitioner.cpp:571] High degree threshold: 21410
+I0509 02:23:31.530552 103730 ahep_partitioner.cpp:632] Number of vertices with high degree 0
+I0509 02:23:31.540283 103730 ahep_partitioner.cpp:700] Edges to a high-degree vertex: 0
+I0509 02:23:31.540313 103730 ahep_partitioner.cpp:701] Edges between two high-degree vertices: 0
+I0509 02:23:31.545771 103730 ahep_partitioner.cpp:129] File name is /home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges.low_edgelist
+I0509 02:23:31.545811 103730 ahep_partitioner.cpp:132] file size: 6625300
+I0509 02:23:31.545820 103730 ahep_partitioner.cpp:139] num_vertices: 77360, num_edges: 828161
+I0509 02:23:31.546495 103730 ahep_partitioner.cpp:162] loading...
+I0509 02:23:31.549381 103730 ahep_partitioner.cpp:166] constructing...
+I0509 02:23:31.556195 103730 ahep_partitioner.cpp:176] time used for graph input and construction: 0.00970064
+I0509 02:23:31.556229 103730 main.cpp:74] partition method: ahep
+I0509 02:23:31.556232 103730 ahep_partitioner.cpp:222] partition `/home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges'
+I0509 02:23:31.556234 103730 ahep_partitioner.cpp:223] number of partitions: 8
+I0509 02:23:31.556238 103730 cluster.cpp:88] average0.00305588
+I0509 02:23:31.556241 103730 cluster.cpp:90] arverage_comm:5.45693e-05
+I0509 02:23:31.556250 103730 cluster.cpp:92] arverage_normal_comm:0.0178571
+I0509 02:23:31.556253 103730 cluster.cpp:95] normal_comm[0]0.00147257
+I0509 02:23:31.556258 103730 cluster.cpp:97] normal_comm[1]0.0395958
+I0509 02:23:31.556268 103730 cluster.cpp:99] normal_comm[2]0.00276189
+I0509 02:23:31.556615 103730 ahep_partitioner.cpp:231] partitioning...
+I0509 02:23:31.556627 103730 ahep_partitioner.cpp:234] 0, 116483
+I0509 02:23:31.611172 103730 ahep_partitioner.cpp:234] 1, 64633
+I0509 02:23:31.656872 103730 ahep_partitioner.cpp:234] 2, 116483
+I0509 02:23:31.717052 103730 ahep_partitioner.cpp:234] 3, 64633
+I0509 02:23:31.769513 103730 ahep_partitioner.cpp:234] 4, 116483
+I0509 02:23:31.836208 103730 ahep_partitioner.cpp:234] 5, 116483
+I0509 02:23:31.900616 103730 ahep_partitioner.cpp:234] 6, 116483
+I0509 02:23:31.970115 103730 ahep_partitioner.cpp:505] Streaming randomly.
+I0509 02:23:31.971700 103730 ahep_partitioner.cpp:510] file size: 0
+I0509 02:23:31.972290 103730 ahep_partitioner.cpp:287] Assigned 0 edges by streaming.
+I0509 02:23:31.972697 103730 ahep_partitioner.cpp:290] expected edges in each partition: 103520
+I0509 02:23:31.972708 103730 ahep_partitioner.cpp:294] balance: 1.1253
+I0509 02:23:31.972756 103730 ahep_partitioner.cpp:215] xyimbalance:3.01391
+I0509 02:23:31.972769 103730 ahep_partitioner.cpp:297] total mirrors: 110979
+I0509 02:23:31.972770 103730 ahep_partitioner.cpp:298] replication factor: 1.43458
+I0509 02:23:31.972772 103730 ahep_partitioner.cpp:299] time used for partitioning: 0.415677
+I0509 02:23:31.972774 103730 ahep_partitioner.cpp:304] total partition time: 0.445166
+I0509 02:23:31.974242 103730 ahep_partitioner.cpp:29] lf_4:2285.78
+I0509 02:23:31.976204 103730 ahep_partitioner.cpp:65] balance_:2.79483
+I0509 02:23:31.976215 103730 main.cpp:77] total time: 0.448757

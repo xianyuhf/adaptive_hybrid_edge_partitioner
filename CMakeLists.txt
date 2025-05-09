@@ -28,10 +28,6 @@ add_executable (main
     src/main.cpp
     src/util.cpp
     src/graph.cpp
-    src/hep_partitioner.cpp
-    src/ne_graph.cpp
-    src/ne_partitioner.cpp
-    src/Vertex2EdgePart.cpp
     src/conversions.cpp
     src/ahep_partitioner.cpp
     src/cluster.cpp)
