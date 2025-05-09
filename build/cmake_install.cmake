@@ -1,4 +1,4 @@
-# Install script for directory: /home/roots/temp1/hybrid_edge_partitioner-release
+# Install script for directory: /home/roots/temp1/4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/roots/temp1/hybrid_edge_partitioner-release/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/roots/temp1/4/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

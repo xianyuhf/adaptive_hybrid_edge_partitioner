@@ -16,7 +16,7 @@ public:
 
     IdxType shift_up(IdxType cur) {
         if (cur == 0) return 0;
-        IdxType p = (cur-1) / 2;//正好是回到他的上一个父节点，这里存的下标应该是一层又一层按顺序来的
+        IdxType p = (cur-1) / 2;
 
         if (heap[cur].first < heap[p].first) {
             std::swap(heap[cur], heap[p]);
@@ -60,11 +60,11 @@ public:
 
     void update_key(KeyType key, ValueType d = 1) {
         if (areEqual(d,0)) {
-            // std::cout<<"occupy3"<<std::endl;
+
             return;
         }
         IdxType cur = key2idx[key];
-        CHECK(cur < n ) << "key not found";//xyhf:这里满足条件就什么也不会说
+        CHECK(cur < n ) << "key not found";
         CHECK( heap[cur].second == key)<<"key not found ";
         heap[cur].first = d;
         cur= shift_up(cur);
@@ -72,22 +72,14 @@ public:
     }
 
     void decrease_key(KeyType key, ValueType d = 1) {
-        // if (areEqual(d,0)) {
-        //     // std::cout<<"occupy3"<<std::endl;
-        //     return;
-        // }
+
         IdxType cur = key2idx[key];
-        CHECK(cur < n ) << "key not found";//xyhf:这里满足条件就什么也不会说
+        CHECK(cur < n ) << "key not found";
         CHECK( heap[cur].second == key)<<"key not found ";
-        // CHECK_GE(heap[cur].first, d) << "value cannot be negative";
         if(cur < n && heap[cur].second == key){
             return;
         }
-        // heap[cur].first -= d;
-        // if(heap[cur].first>d || areEqual(heap[cur].first,d)){  //0.4本来是小的，该选他的，结果变成减1，变成-0.6
         heap[cur].first -= d;
-        // }
-        // shift_up(cur);
         cur= shift_up(cur);
         shift_down(cur);
     }
@@ -95,52 +87,23 @@ public:
     void increase_key(KeyType key, ValueType d = 1) {
         if (d == 0) return;
         IdxType cur = key2idx[key];
-        CHECK(cur < n ) << "key not found";//xyhf:这里满足条件就什么也不会说
+        CHECK(cur < n ) << "key not found";
         CHECK( heap[cur].second == key)<<"key1 not found ";
-        // CHECK_GE(heap[cur].first, d) << "value cannot be negative";
-        // if(cur < n && heap[cur].second == key){
-        //     return;
-        // }
-        // heap[cur].first -= d;
-        // shift_up(cur);
-        // if(heap[cur].first>d || areEqual(heap[cur].first,d)){  //0.4本来是小的，该选他的，结果变成减1，变成-0.6
+
         heap[cur].first += d;
         cur= shift_up(cur);
         shift_down(cur);
     }
 
     void  comp_decrease_key(KeyType key, ValueType comp) {
-            
-            // if (d == 0) return;
-            IdxType cur = key2idx[key];
-            //这里是为什么呢，我是有点懵的 ，感觉不会出现这个问题呀
-            CHECK(cur < n ) << "key not found";//xyhf:这里满足条件就什么也不会说
-            CHECK( heap[cur].second == key)<<"key1 not found ";
-            // if(heap[cur].first>comp || areEqual(heap[cur].first,comp)){  //0.4本来是小的，该选他的，结果变成减1，变成-0.6
-                heap[cur].first = comp;
-                cur=shift_up(cur);
-                shift_down(cur);
-            // }
-        }
-        // void  comp_decrease_key(KeyType key, ValueType comp,ValueType d = 1) {
-            
-        //     if (d == 0) return;
-        //     IdxType cur = key2idx[key];
-        //     //这里是为什么呢，我是有点懵的 ，感觉不会出现这个问题呀
-        //     CHECK(cur < n && heap[cur].second == key) << "key not found";//xyhf:这里满足条件就什么也不会说
-        //     // if(comp==0){
-        //     //     heap[cur].first=0;
-        //     //     shift_up(cur);
-        //     // }else{
-            
-        //     if(heap[cur].first>d || areEqual(heap[cur].first,d)){  //0.4本来是小的，该选他的，结果变成减1，变成-0.6
-        //         heap[cur].first -= d;
-        //         shift_up(cur);
-        //     }
-            
-        //     // }
-
-        // }
+        IdxType cur = key2idx[key];
+        CHECK(cur < n ) << "key not found";
+        CHECK( heap[cur].second == key)<<"key1 not found ";
+    
+        heap[cur].first = comp;
+        cur=shift_up(cur);
+        shift_down(cur);
+}
     bool remove(KeyType key) {
         IdxType cur = key2idx[key];
         if (cur >= n || heap[cur].second != key)

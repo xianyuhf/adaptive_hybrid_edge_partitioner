@@ -1,5 +1,0 @@
-Log file created at: 2025/05/09 14:29:51
-Running on machine: node0
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0509 14:29:51.978085 45530 conversions.cpp:169] converting `/home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges'
-F0509 14:29:51.979490 45530 conversions.cpp:19] Could not load:/home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges, error: No such file or directory

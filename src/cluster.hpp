@@ -12,8 +12,7 @@ extern std::vector<std::vector<double>> comms;
 extern double  arverage_comm;
 extern std::vector<int> min_comm;
 extern sset comms_set;
-// extern char *comm_condition;
-//实验版本
+
 void set_ability();
 void set_ability_haep();
 void set_delta(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::vector<double>& capacities);
@@ -26,7 +25,6 @@ void calculateMinComm();
 
 class tset {
 public:
-    // 插入或更新元素
     void insert(vid_t id, double value) {
         data[id] = value;
     }
@@ -41,7 +39,7 @@ public:
             
             return true;
         }
-        return false; // 没有找到
+        return false; 
     }
     bool updates_comm(vid_t vid){
         double value;
@@ -51,37 +49,30 @@ public:
             }
             comms_set.insert(comm_id,value);
             data[vid]=value;
-            // return value;
         }
         
-        // for(auto it=data.begin();it!=data.end();it++){
-        //     data[vid]+=comms[vid][it->first];
-        // }
+
         return true;
     }
-    bool updates_hcsg(vid_t vid){//这里的id是分区号
+    bool updates_hcsg(vid_t vid){
         for(auto it=data.begin();it!=data.end();it++){
-        //    update(it->first,comms[it->first][vid]);
-        //    update(vid,); 
            data[vid]+=comms[vid][it->first];
            data[it->first]+=comms[it->first][vid];
         }
     }
-    // 根据 ID 获取值
     bool get(vid_t id, double &value) {
         auto it = data.find(id);
         if (it != data.end()) {
-            value = it->second; // 找到元素，返回值
+            value = it->second; 
             return true;
         }
-        return false; // 没有找到
+        return false; 
     }
 
-    // 根据 ID 删除元素
     bool remove(vid_t id) {
         auto it = data.find(id);
         if (it != data.end()) {
-            data.erase(it); // 删除元素
+            data.erase(it); 
             return true; 
         }
         return false; 
@@ -185,7 +176,7 @@ public:
         }
     }
 public:
-    std::unordered_map<int, tset> tset_temp; // id -> tset 映射
+    std::unordered_map<int, tset> tset_temp; 
 };
 
 

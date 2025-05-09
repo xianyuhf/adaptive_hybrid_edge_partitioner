@@ -26,7 +26,7 @@ void AHEPartitioner::set_lf(){
         }
     }
     
-    LOG(INFO)<<"lf_"<<FLAGS_topo<<":"<<lf;
+    LOG(INFO)<<"lf_"<<FLAGS_topo<<":"<<lf/sizes;
 }
 void AHEPartitioner::set_load(){
     double max_c=0.0;
@@ -95,7 +95,6 @@ AHEPartitioner::AHEPartitioner(std::string basefilename)
     delete converter;
     convert_timer.stop();
     LOG(INFO) << "convert time: " << convert_timer.get_time();
-    total_time.start();
     LOG(INFO) << "initializing partitioner";
 
     hybrid_partitioning = FLAGS_hybrid_NE;
@@ -169,7 +168,6 @@ AHEPartitioner::AHEPartitioner(std::string basefilename)
     degrees.resize(num_vertices);
     degree_temp.assign(num_vertices,0);
     std::ifstream degree_file(degree_name(basefilename), std::ios::binary);
-
     degree_file.read((char *)&degrees[0], num_vertices * sizeof(vid_t));
     degree_file.close();
     read_timer.stop();
@@ -212,7 +210,6 @@ size_t AHEPartitioner::count_mirrors()
             result1=is_boundarys[i].popcount();
         }
     }
-    LOG(INFO)<<"xyimbalance:"<<double(result1)/(result/p);
         
     return result;
 }
@@ -231,8 +228,6 @@ void AHEPartitioner::split()
     LOG(INFO) << "partitioning...";
     compute_timer.start();
     for (bucket = 0; bucket < p - 1; bucket++) {
-        LOG(INFO) << bucket << ", "<<capacities[bucket];
-        DLOG(INFO) << "sample size: " << adj_out.num_edges();
         while (occupied[bucket] < capacities[bucket]) {
             double d;
             vid_t vid;
@@ -296,12 +291,7 @@ void AHEPartitioner::split()
     size_t total_mirrors = count_mirrors();
     LOG(INFO) << "total mirrors: " << total_mirrors;
     LOG(INFO) << "replication factor: " << (double)total_mirrors / num_vertices;
-    LOG(INFO) << "time used for partitioning: " << compute_timer.get_time();
-
     CHECK_EQ(assigned_edges, num_edges);
-
-    total_time.stop();
-    LOG(INFO) << "total partition time: " << total_time.get_time();
     set_lf();
     set_load();
 }

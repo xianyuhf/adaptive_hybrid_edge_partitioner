@@ -4,9 +4,6 @@
 
 #include "ahep_partitioner.hpp"
 
-// #include "cluster.hpp"
-
-
 
 DECLARE_bool(help);
 DECLARE_bool(helpshort);
@@ -56,7 +53,7 @@ int main(int argc, char *argv[])
 
     google::InitGoogleLogging(argv[0]);
     FLAGS_logtostderr = 0; // output log to stderr
-    FLAGS_alsologtostderr = true;//是否将日志输出到文件和stderr
+    FLAGS_alsologtostderr = true;
     if (FLAGS_help) {
         FLAGS_help = false;
         FLAGS_helpshort = true;

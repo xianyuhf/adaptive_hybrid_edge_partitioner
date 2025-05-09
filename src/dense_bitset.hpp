@@ -1,4 +1,4 @@
-//bitset 就是你是数字几，就在哪个bit位置为1，然后get_bit就是返回0或者1
+
 #pragma once
 
 #include <cstdio>

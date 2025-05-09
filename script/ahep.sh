@@ -20,8 +20,7 @@ test1()
     p=8
     for i in {0..0}
     do
-        log_info="hw_ahep100_4_"${p}"_"
-        $executePath/$executeName -p $p -method $method -hdf 1000 -hybrid_NE 1 -topo 4 -filename ${inputfile[0]} -output ${outputfile[0]} -log_dirs ${log_dirs[0]} -log_info $log_info
+        $executePath/$executeName -p $p -method $method -hdf 1000 -hybrid_NE 1 -topo 4 -filename ${inputfile[0]} 
         let p=p\*2
     done
     popd

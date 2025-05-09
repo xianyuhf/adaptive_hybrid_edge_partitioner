@@ -14,9 +14,9 @@ class mpid{
     ~mpid()
     {    
     }
-    void set_comm(vid_t pid){
-       auto it = sets.find(pid);
-    }
+    // void set_comm(vid_t pid){
+    //    auto it = sets.find(pid);
+    // }
 };
 
 
