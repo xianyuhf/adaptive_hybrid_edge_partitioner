@@ -10,22 +10,22 @@ sset comms_set;
 void set_ability(){
     double comp[2]={0.17,0.30}; 
     
-    double comm[3]={0.0000045,0.000121,0.00000844}; 
+    double comm[3]={0.0000045,0.000121,0.000121}; 
      
 
     int p=FLAGS_p;
     comps.resize(p);
-    if(FLAGS_topo==1||FLAGS_topo==3){  //comps同
+    if(FLAGS_topo==1||FLAGS_topo==3){  
         double sum1 = comp[0]*p;
-        double normal_comp=(comp[0]/sum1);//所有的都这样，计算能力相同  ，这是归一化计算能力，接下来归一化通信能力
+        double normal_comp=(comp[0]/sum1);
         for(int i=0;i<p;i++){
             comps[i]=normal_comp;
         }
     }
-    if(FLAGS_topo==2||FLAGS_topo==4){  //comps不同
+    if(FLAGS_topo==2||FLAGS_topo==4){
         double sum1 = comp[0]*(p-2)+comp[1]*2;
         double normal_comp[2];
-        normal_comp[0]=(comp[0]/sum1);//归一化通信能力
+        normal_comp[0]=(comp[0]/sum1);
         normal_comp[1]=(comp[1]/sum1);
         int i=0;
         for(;i<p;i++){
@@ -57,14 +57,14 @@ void set_ability(){
         }
     }
     
-    
-    //set_comm
     for(int i=0;i<p;i++){
         comms.push_back(std::vector<double>());
         for(int j=0;j<p;j++){
             comms[i].push_back(0);
         }
     }
+
+    //comms
     if(FLAGS_topo==1||FLAGS_topo==2){
         double normal_comm=(double)((double)(1)/((double)(p*(p-1))));
         for(int i=0;i<p;i++){
@@ -84,12 +84,9 @@ void set_ability(){
         double arverage_normal_comm=normal_comm_sum/((p*(p-1))*normal_comm_sum);
         LOG(INFO)<<"arverage_normal_comm:"<<arverage_normal_comm;
         double normal_comm[3];
-        normal_comm[0]=comm[0]/normal_comm_sum;  
-        LOG(INFO)<<"normal_comm[0]"<<normal_comm[0];
+        normal_comm[0]=comm[0]/normal_comm_sum; 
         normal_comm[1]=comm[1]/normal_comm_sum;  
-        LOG(INFO)<<"normal_comm[1]"<<normal_comm[1];
         normal_comm[2]=comm[2]/normal_comm_sum;  
-        LOG(INFO)<<"normal_comm[2]"<<normal_comm[2];
 
         for(int i=0;i<p;i++){
             for(int j=0;j<p;j++){
@@ -129,11 +126,8 @@ void set_ability(){
         LOG(INFO)<<"arverage_normal_comm:"<<arverage_normal_comm;
         double normal_comm[3];
         normal_comm[0]=comm[0]/normal_comm_sum;  
-        LOG(INFO)<<"normal_comm[0]"<<normal_comm[0];
         normal_comm[1]=comm[1]/normal_comm_sum;  
-        LOG(INFO)<<"normal_comm[1]"<<normal_comm[1];
         normal_comm[2]=comm[2]/normal_comm_sum;  
-        LOG(INFO)<<"normal_comm[2]"<<normal_comm[2];
  
         int i=0;
         for(int i=0;i<p;i++){

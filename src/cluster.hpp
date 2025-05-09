@@ -158,7 +158,7 @@ public:
     bool undate_value_hcsg(int id,int vid){ 
 
         auto it = tset_temp.find(id);
-        if (it != tset_temp.end()) {//
+        if (it != tset_temp.end()) {
             it->second.updates_hcsg(vid); 
             return true;
         }

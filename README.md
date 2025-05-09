@@ -35,18 +35,16 @@ make -j8
 Usage:
 ```
 $ ./main --help
-main: -filename <path to the input graph> [-method hep] [-hdf <threshold / \tau>] [-p <number of partitions>] 
+main: -filename <path to the input graph> [-method hep] [-hdf <threshold / \tau>] [-p <number of partitions>] [-topo <Cluster Topology ID>]
 
 ```
 
 ### Example.
-Partition the Orkut graph into 8 parts using HEP with \tau = 10.0:
+Partition the Slashdot graph into 8 parts using HEP with \tau = 10.0 under heterogenous cluster(topo=4):
 
 ```
-$ ./main -p 8 -method ahep -hdf 10.0 -filename /path/to/com-orkut.ungraph.txt
+$ ./main -p 8 -method ahep -hdf 10.0 -topo 4 -filename ../data/Slashdot.edges
 
-
-$executePath/$executeName -p $p -method $method -hdf 100 -hybrid_NE 1 -topo 4 -filename ${inputfile[0]} -output ${outputfile[0]} -log_dirs ${log_dirs[0]} -log_info $log_info
 ```
 
 ### Acknowledgements.

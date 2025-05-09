@@ -23,10 +23,10 @@ DEFINE_double(hdf, 100, "High-degree factor: hdf * average_degree = high-degree 
 DEFINE_double(lambda, 1.1, "Lambda value to weigh in balancing score in streaming partitioning via HCSG");
 DEFINE_bool(extended_metrics, false, "Display extended metrics in the result");
 DEFINE_bool(random_streaming, true, "Use random streaming instead of  HCSG in the second phase of AHEP.");
-DEFINE_bool(hybrid_NE, false, "Perform hybrid partitioning in AHEP-style, but use NE instead of NE++ for the first phase.");
+DEFINE_bool(hybrid_NE, true, "Perform hybrid partitioning in AHEP-style, but use NE instead of NE++ for the first phase.");
 DEFINE_string(log_info,"","information in the diary");
 DEFINE_string(log_dirs,"","location of the diary");
-DEFINE_int32(topo,0,"topoplgy");
+DEFINE_int32(topo,4,"topoplgy");
 
  
 #define TOTAL

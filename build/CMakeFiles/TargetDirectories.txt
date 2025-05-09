@@ -1,3 +1,0 @@
-/home/roots/temp1/4/build/CMakeFiles/rebuild_cache.dir
-/home/roots/temp1/4/build/CMakeFiles/edit_cache.dir
-/home/roots/temp1/4/build/CMakeFiles/main.dir
