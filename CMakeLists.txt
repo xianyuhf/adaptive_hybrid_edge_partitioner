@@ -28,7 +28,6 @@ add_executable (main
     src/main.cpp
     src/util.cpp
     src/graph.cpp
-    src/ne_graph.cpp
     src/conversions.cpp
     src/ahep_partitioner.cpp
     src/cluster.cpp)
