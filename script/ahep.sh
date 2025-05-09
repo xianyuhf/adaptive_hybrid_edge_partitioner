@@ -7,8 +7,8 @@ executeName=main
 
 method=ahep
 
-inputfile[0]='/home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges'
-outputfile[0]="/home/roots/temp1/HHEP/data/0.6MB_Slashdot/Slashdot.edges"
+inputfile[0]='../data/Slashdot.edges'
+outputfile[0]="../data/Slashdot.edges"
 
 
 log_info=""
@@ -40,7 +40,7 @@ execute(){
 }
 
 main(){
-    complie
+    # complie
     execute
     return 0
 }

@@ -116,7 +116,7 @@ void set_ability(){
         }
     }
 
-    if(FLAGS_topo==11||FLAGS_topo==22){//comm同
+    if(FLAGS_topo==11||FLAGS_topo==22){
         double normal_comm=(double)((double)(1)/((double)(p*(p-1))));
         for(int i=0;i<p;i++){
             for(int j=0;j<p;j++){
@@ -126,8 +126,8 @@ void set_ability(){
         for(int i=0;i<p;i++){
             comms[i][i]=0.0;
         }
-    } //
-    if(FLAGS_topo==33||FLAGS_topo==44){//通信能力不相同
+    } 
+    if(FLAGS_topo==33||FLAGS_topo==44){
         double p1=p/2;
         double normal_comm_sum=double((comm[0]*(p/2-1)+comm[2]*(p/2))*(p/2)+(comm[2]*(p-1))*(p/2));
         LOG(INFO)<<"average"<<normal_comm_sum;
@@ -135,15 +135,14 @@ void set_ability(){
         LOG(INFO)<<"arverage_comm:"<<arverage_comm;
         double arverage_normal_comm=normal_comm_sum/((p*(p-1))*normal_comm_sum);
         LOG(INFO)<<"arverage_normal_comm:"<<arverage_normal_comm;
-        double normal_comm[3];//就是有三类通信链路，
-        normal_comm[0]=comm[0]/normal_comm_sum;  //归一化完成  5.8的机器的b_i的comm项目
+        double normal_comm[3];
+        normal_comm[0]=comm[0]/normal_comm_sum;  
         LOG(INFO)<<"normal_comm[0]"<<normal_comm[0];
-        normal_comm[1]=comm[1]/normal_comm_sum;  //归一化完成  2.6的 b_i的comm
+        normal_comm[1]=comm[1]/normal_comm_sum;  
         LOG(INFO)<<"normal_comm[1]"<<normal_comm[1];
-        normal_comm[2]=comm[2]/normal_comm_sum;  //归一化完成  2.6的 b_i的comm
+        normal_comm[2]=comm[2]/normal_comm_sum;  
         LOG(INFO)<<"normal_comm[2]"<<normal_comm[2];
-        // normal_comm[2]=comm[2]/normal_comm_sum;
-        // LOG(INFO)<<"normal_comm[2]"<<normal_comm[2];
+ 
         int i=0;
         for(int i=0;i<p;i++){
             for(int j=0;j<p;j++){
@@ -170,7 +169,7 @@ void set_ability(){
 }
 
 
-void set_delta(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::vector<double>& capacities){//实验版
+void set_delta(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::vector<double>& capacities){
     int p= FLAGS_p;
 
     double average_degree = (double)num_edges * 2 / num_vertices;
@@ -203,36 +202,35 @@ void set_delta(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::v
         }
         
         cabsum+=capacities[i];
-        // LOG(INFO)<<"cap"<<i<<":"<<capacities[i];
+        
     }
-    // capacities[p-1]=num_edges-cabsum;
 
 }
 
 
 
-void set_ability_haep(){//实验版
-    double comp[2]={0.17,0.30}; //三种类型
+void set_ability_haep(){
+    double comp[2]={0.17,0.30}; 
     
     double comm[3]={0.0000045,0.000121,0.00000844}; 
      
 
     int p=FLAGS_p;
-    //set_comp
+
     comps.resize(p);
     comp[0]=1/comp[0];comp[1]=1/comp[1];
-    if(FLAGS_topo==1||FLAGS_topo==3){  //comps同
+    if(FLAGS_topo==1||FLAGS_topo==3){ 
         double sum1 = comp[0]*p;
-        double normal_comp=(comp[0]/sum1);//所有的都这样，计算能力相同  ，这是归一化计算能力，接下来归一化通信能力
+        double normal_comp=(comp[0]/sum1);
         for(int i=0;i<p;i++){
             comps[i]=normal_comp;
         }
     }
-    if(FLAGS_topo==2||FLAGS_topo==4){  //comps不同
+    if(FLAGS_topo==2||FLAGS_topo==4){  
         double p1=p/2;
         double sum1 = comp[0]*(p-2)+comp[1]*2;
         double normal_comp[2];
-        normal_comp[0]=(comp[0]/sum1);//归一化通信能力
+        normal_comp[0]=(comp[0]/sum1);
         normal_comp[1]=(comp[1]/sum1);
         int i=0;
         for(;i<p;i++){
@@ -243,18 +241,18 @@ void set_ability_haep(){//实验版
     }
 
 
-    if(FLAGS_topo==11||FLAGS_topo==33){  //comps同
+    if(FLAGS_topo==11||FLAGS_topo==33){ 
         double sum1 = comp[0]*p;
-        double normal_comp=(comp[0]/sum1);//所有的都这样，计算能力相同  ，这是归一化计算能力，接下来归一化通信能力
+        double normal_comp=(comp[0]/sum1);
         for(int i=0;i<p;i++){
             comps[i]=normal_comp;
         }
     }
-    if(FLAGS_topo==22||FLAGS_topo==44){  //comps不同
+    if(FLAGS_topo==22||FLAGS_topo==44){  
         double p1=p/2;
         double sum1 = comp[0]*(p/2)+comp[1]*(p/2);
         double normal_comp[2];
-        normal_comp[0]=(comp[0]/sum1);//归一化通信能力
+        normal_comp[0]=(comp[0]/sum1);
         normal_comp[1]=(comp[1]/sum1);
         int i=0;
         for(;i<p/2;i++){
@@ -265,7 +263,7 @@ void set_ability_haep(){//实验版
         }
     }
 }
-void set_delta_haep(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::vector<double>& capacities){//实验版
+void set_delta_haep(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,std::vector<double>& capacities){
     int p= FLAGS_p;
     
     double average_degree = (double)num_edges * 2 / num_vertices;
@@ -285,7 +283,6 @@ void set_delta_haep(vid_t num_edges,vid_t num_vertices,std::vector<double>& bs,s
     for(int i=0;i<p-1;i++){
         capacities[i]=ceil(((double)num_edges)*(bs[i]));
         cabsum+=capacities[i];
-        // LOG(INFO)<<"cap"<<i<<":"<<capacities[i];
     }
     capacities[p-1]=(double)num_edges-cabsum;
 }
@@ -303,11 +300,11 @@ void experiments(vid_t num_edges,vid_t num_vertices){
         comms.push_back(std::vector<double>());
         comps.push_back(0.0);
         for(int j=0;j<4;j++){
-            comms[i].push_back(0.111111111);//2/11     2*5+1  0.15*6+0.3*6 =   1/18
+            comms[i].push_back(0.111111111);
         }
-    }//0.17 0.30  
-    comps[2]=comps[3]=0.33; //1/6
-    comps[0]=comps[1]=0.17; //2/6
+    }
+    comps[2]=comps[3]=0.33; 
+    comps[0]=comps[1]=0.17; 
     comms[1][3]=0.055;comms[3][1]=0.055;
     comms[0][1]=0.055;comms[1][0]=0.055;
     comms[0][3]=0.055;comms[3][0]=0.055;
@@ -333,7 +330,6 @@ void experiments(vid_t num_edges,vid_t num_vertices){
 }
 
 void calculateMinComm() {
-    // 初始化 min_comm 数组为最大值
     int p= FLAGS_p;
     min_comm.resize(p + 1, std::numeric_limits<int>::max());
 

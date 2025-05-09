@@ -82,17 +82,16 @@ public:
         auto it = data.find(id);
         if (it != data.end()) {
             data.erase(it); // 删除元素
-            return true; // 删除成功
+            return true; 
         }
-        return false; // 没有找到元素，删除失败
+        return false; 
     }
 
-    // 删除所有元素
     void clear() {
-        data.clear(); // 清空所有元素
+        data.clear(); 
     }
 
-    // 可选：检查集合是否为空
+
     bool isEmpty() const {
         return data.empty();
     }
@@ -105,79 +104,76 @@ public:
         }
     }
 public:
-    std::unordered_map<int, double> data; // id -> value 映射
+    std::unordered_map<int, double> data; 
     std::string comm_id;
 };
 
-class TSetManager {//这里存的是所有顶点，到vid的时候才是存某个顶点的value
+class TSetManager {
 public:
-    // 添加或更新 tset
+
     void insertTSet(int id, vid_t vid, double value) {
-        tset &ts = tset_temp[id]; // 获取或创建 tset
-        ts.insert(vid, value); // 在 tset 中插入或更新值
+        tset &ts = tset_temp[id]; 
+        ts.insert(vid, value);
         ts.insert_comm_id(vid);
     }
 
-    // 从 tset 获取值
     double getValue(int id, vid_t vid, double &value) {
         auto it = tset_temp.find(id);
         if (it != tset_temp.end()) {
-             it->second.get(vid, value); // 从 tset 中获取值
+             it->second.get(vid, value); 
              return true;
         }
-        return false; // 没有找到对应的 tset
+        return false; 
     }
 
-    // 从 tset 删除元素
     bool removeValue(int id, vid_t vid) {
         auto it = tset_temp.find(id);
         if (it != tset_temp.end()) {
-            return it->second.remove(vid); // 从 tset 中删除元素
+            return it->second.remove(vid); 
         }
-        return false; // 没有找到对应的 tset
+        return false; 
     }
 
-    // 清空指定 tset
+
     void clearTSet(int id) {
         auto it = tset_temp.find(id);
         if (it != tset_temp.end()) {
-            it->second.clear(); // 清空 tset
+            it->second.clear(); 
         }
     }
 
-    // 清空所有 tset
+    
     void clearAll() {
-        tset_temp.clear(); // 清空所有 tset
+        tset_temp.clear(); 
     }
 
-    // 检查 tset 是否为空
+
     bool isTSetEmpty(int id) {
         auto it = tset_temp.find(id);
         if (it != tset_temp.end()) {
-            return it->second.isEmpty(); // 检查 tset 是否为空
+            return it->second.isEmpty(); 
         }
-        return true; // 没有找到对应的 tset
+        return true; 
     }
 
 
-    bool undate_value(int id,int vid){ //这个vid 是哪个分区
-        auto it = tset_temp.find(id);//首先看有没有这个顶点
-        if (it != tset_temp.end()) {//
-             it->second.updates_comm(vid); // 找到元素，然后遍历值，更新这个顶点的每个通信链路
-             return true;
+    bool undate_value(int id,int vid){ 
+        auto it = tset_temp.find(id);
+        if (it != tset_temp.end()) {
+             it->second.updates_comm(vid); 
         }
-        return false; // 没有找到
+        return false; 
        
     }
 
-    bool undate_value_hcsg(int id,int vid){ //这个vid 是哪个分区
+    bool undate_value_hcsg(int id,int vid){ 
 
-        auto it = tset_temp.find(id);//首先看有没有这个顶点
+        auto it = tset_temp.find(id);
         if (it != tset_temp.end()) {//
-            it->second.updates_hcsg(vid); // 找到元素，然后遍历值，更新这个顶点的每个通信链路
+            it->second.updates_hcsg(vid); 
             return true;
         }
-        return false; // 没有找到
+        return false; 
        
     }
     bool find(vid_t vid){

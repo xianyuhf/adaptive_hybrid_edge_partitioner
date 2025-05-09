@@ -1,0 +1,5 @@
+Log file created at: 2025/05/09 14:31:09
+Running on machine: node0
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0509 14:31:09.386941 46962 conversions.cpp:169] converting `../data/Slashdot.edges/Slashdot.edges'
+F0509 14:31:09.387344 46962 conversions.cpp:19] Could not load:../data/Slashdot.edges/Slashdot.edges, error: Not a directory
